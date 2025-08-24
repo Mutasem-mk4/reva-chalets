@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes drawPath {
+      from { stroke-dashoffset: 1000; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes colorFill {
+      from { fill-opacity: 0; }
+      to { fill-opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    #r-letter {
+      animation: drawPath 1s ease forwards, colorFill 0.5s ease 0.8s forwards;
+      stroke: #1a3a63;
+      stroke-width: 2;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      fill-opacity: 0;
+    }
+
+    #house-icon {
+      animation: fadeIn 0.5s ease 1.2s forwards, bounce 2s ease-in-out 1.7s infinite;
+      transform-origin: center;
+      opacity: 0;
+    }
+
+    #e-letter {
+      animation: drawPath 0.8s ease 0.3s forwards, colorFill 0.5s ease 1s forwards;
+      stroke: #1a3a63;
+      stroke-width: 2;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      fill-opacity: 0;
+    }
+
+    #v-letter {
+      animation: drawPath 0.8s ease 0.6s forwards, colorFill 0.5s ease 1.2s forwards;
+      stroke: #1a3a63;
+      stroke-width: 2;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      fill-opacity: 0;
+    }
+
+    #a-letter {
+      animation: drawPath 0.8s ease 0.9s forwards, colorFill 0.5s ease 1.4s forwards;
+      stroke: #1a3a63;
+      stroke-width: 2;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      fill-opacity: 0;
+    }
+
+    #jordan-text {
+      animation: slideIn 0.8s ease 1.5s forwards;
+      opacity: 0;
+    }
+  </style>
+  
+  <!-- R -->
+  <path id="r-letter" fill="#1a3a63" d="M60,20 h40 a20,20 0 0,1 0,40 h-10 l20,30 h-25 l-18,-30 h-7 v30 h-20 v-70 h20 z M60,40 h20 a5,5 0 0,1 0,10 h-20 v-10 z"/>
+  <!-- House icon in R -->
+  <path id="house-icon" fill="#1a3a63" d="M60,75 h10 v10 h-10 z M55,70 l10,-10 l10,10 z"/>
+  <!-- eva -->
+  <path id="e-letter" fill="#1a3a63" d="M140,40 a20,20 0 0,1 40,0 v5 h-30 a5,5 0 0,0 5,5 h25 v10 a20,20 0 0,1 -40,0 v-20 z M150,35 a5,5 0 0,0 0,10 h20 v-5 a5,5 0 0,0 -10,0 h-10 z"/>
+  <path id="v-letter" fill="#1a3a63" d="M190,20 h20 l15,70 h-20 l-5,-30 l-5,30 h-20 z"/>
+  <path id="a-letter" fill="#1a3a63" d="M230,40 a20,20 0 0,1 40,0 v40 h-20 v-5 a20,20 0 0,1 -20,-5 v-30 z M250,35 a5,5 0 0,0 0,10 h0 a5,5 0 0,0 0,-10 z"/>
+  <!-- Jordan text -->
+  <text id="jordan-text" x="300" y="60" font-family="Montserrat, sans-serif" font-size="24" font-weight="500" fill="#c4161c">Jordan</text>
+</svg>
