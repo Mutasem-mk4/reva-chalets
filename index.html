@@ -6,6 +6,9 @@
     <title>Reva Chalets - Experience the Magic of Jordan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -22,116 +25,331 @@
                             700: '#d62828',
                             800: '#9d0208',
                             900: '#600'
+                        },
+                        'sand': {
+                            100: '#f8f4f0',
+                            200: '#eee5d9',
+                            300: '#e0ccb9',
+                            400: '#cda68a',
+                            500: '#b88661',
+                            600: '#a16e49',
+                            700: '#83563a',
+                            800: '#65412e',
+                            900: '#4d3124'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif']
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif']
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 4s linear infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'slide-up': 'slide-up 0.8s ease-out forwards',
+                        'fade-in': 'fade-in 0.8s ease-out forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' }
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        'fade-in': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(231, 111, 81, 0.3)',
+                        'strong': '0 20px 40px -10px rgba(0, 0, 0, 0.2)'
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        
+        .font-vibes {
+            font-family: 'Great Vibes', cursive;
         }
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        .hover-scale {
-            transition: transform 0.3s ease-out;
-        }
-        .hover-scale:hover {
-            transform: translateY(-8px) scale(1.02);
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #e76f51, #f4a261, #e9c46a);
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #e76f51, #f4a261, #e9c46a, #2a9d8f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .glow-effect {
+            position: relative;
+        }
+        
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #e76f51, #f4a261, #e9c46a, #2a9d8f);
+            z-index: -1;
+            border-radius: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .glow-effect:hover::after {
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+        
+        .stagger-animation {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .animated-section {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .hero-title {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="50"><path d="M0,25 Q25,0 50,25 T100,25 L100,50 L0,50 Z" fill="none" stroke="rgba(231,111,81,0.3)" stroke-width="2"/></svg>');
+            background-repeat: repeat-x;
+            background-position: center bottom;
+            background-size: 50px 15px;
+        }
+        
+        .star-animation {
+            position: relative;
+        }
+        
+        .star-animation::before {
+            content: '*';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            animation: spin-slow 3s linear infinite, bounce-slow 2s ease-in-out infinite;
+            color: #e76f51;
+            font-size: 1.5rem;
+        }
+        
+        .desert-bg {
+            background: linear-gradient(135deg, #f8f4f0 0%, #e0ccb9 50%, #b88661 100%);
+        }
+        
+        .petra-bg {
+            background: linear-gradient(135deg, #9d0208 0%, #d62828 50%, #e76f51 100%);
+        }
+        
+        .sea-bg {
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 50%, #90e0ef 100%);
+        }
+        
+        .testimonial-card {
+            transform: rotateY(0deg);
+            transition: transform 0.6s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+        
+        .cursor-fx {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(231, 111, 81, 0.5);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease, background 0.3s ease;
+        }
+        
+        .cursor-fx-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #e76f51;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+        
+        .cursor-target {
+            cursor: none;
+        }
+        
+        .nav-item:hover .cursor-fx {
+            transform: scale(2);
+            background: rgba(231, 111, 81, 0.8);
+        }
+        
+        @media (max-width: 768px) {
+            .cursor-fx, .cursor-fx-dot {
+                display: none;
+            }
         }
     </style>
 </head>
-<body class="bg-gradient-to-b from-amber-50 to-orange-50 min-h-screen">
+<body class="bg-sand-100 text-gray-800 cursor-target">
+    <!-- Custom Cursor -->
+    <div class="cursor-fx" id="cursor"></div>
+    <div class="cursor-fx-dot" id="cursor-dot"></div>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-lg border-b border-amber-100">
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-xl z-50 shadow-lg border-b border-amber-100 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                    <span class="text-2xl font-bold gradient-text">Reva Chalets</span>
+                <div class="flex items-center space-x-2 group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <span class="text-2xl font-bold text-gradient">Reva Chalets</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Home</a>
-                    <a href="#chalets" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Chalets</a>
-                    <a href="#about" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">About</a>
-                    <a href="#contact" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Contact</a>
+                    <a href="#home" class="nav-item text-gray-700 hover:text-amber-600 transition-all duration-300 font-medium relative">Home</a>
+                    <a href="#chalets" class="nav-item text-gray-700 hover:text-amber-600 transition-all duration-300 font-medium relative">Chalets</a>
+                    <a href="#about" class="nav-item text-gray-700 hover:text-amber-600 transition-all duration-300 font-medium relative">About</a>
+                    <a href="#contact" class="nav-item text-gray-700 hover:text-amber-600 transition-all duration-300 font-medium relative">Contact</a>
                 </div>
-                <button class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    Book Now
+                <button class="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover-lift relative overflow-hidden group">
+                    <span class="relative z-10">Book Now</span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-600 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-6">
-        <div class="max-w-7xl mx-auto">
+    <section id="home" class="pt-32 pb-20 px-6 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto w-full">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
-                    <div class="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium">
-                        <i class="fas fa-sparkles w-4 h-4"></i>
-                        Premium Jordanian Experience
+                    <div class="inline-flex items-center gap-3 bg-white/70 backdrop-blur-sm text-amber-800 px-6 py-3 rounded-full text-sm font-medium shadow-lg transform hover:scale-105 transition-transform duration-300 animate-float">
+                        <i class="fas fa-fire text-amber-600"></i>
+                        <span class="font-vibes text-2xl">Exclusive Jordan Experience</span>
                     </div>
-                    <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                    
+                    <h1 class="text-6xl lg:text-8xl font-black text-gray-900 leading-tight hero-title">
                         Experience the 
-                        <span class="gradient-text"> Magic of Jordan</span>
+                        <span class="text-gradient block">Magic of Jordan</span>
                     </h1>
-                    <p class="text-xl text-gray-700 leading-relaxed">
+                    
+                    <p class="text-2xl text-gray-700 leading-relaxed animate-fade-in" style="animation-delay: 0.3s">
                         Discover extraordinary accommodations from the ancient wonders of Petra to the serene shores of the Dead Sea. 
                         Immerse yourself in authentic Jordanian hospitality and breathtaking landscapes.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2">
-                            Explore Chalets
-                            <i class="fas fa-chevron-right"></i>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 pt-4 animate-fade-in" style="animation-delay: 0.6s">
+                        <button class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover-lift flex items-center justify-center gap-3 group relative overflow-hidden">
+                            <span class="relative z-10">Explore Chalets <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i></span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-600 to-pink-600 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                         </button>
-                        <button class="border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
-                            View Gallery
+                        <button class="border-4 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 hover-lift backdrop-blur-sm bg-white/70 hover:bg-amber-600/90 flex items-center justify-center gap-3">
+                            <i class="fas fa-play-circle"></i>
+                            Virtual Tour
                         </button>
                     </div>
-                    <div class="flex items-center gap-8 pt-4">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-amber-600">150+</div>
-                            <div class="text-sm text-gray-600">Happy Guests</div>
+                    
+                    <div class="grid grid-cols-3 gap-8 pt-8 animate-fade-in" style="animation-delay: 0.9s">
+                        <div class="text-center star-animation">
+                            <div class="text-4xl font-bold text-amber-600">150+</div>
+                            <div class="text-sm text-gray-600 font-medium">Happy Guests</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-amber-600">12</div>
-                            <div class="text-sm text-gray-600">Unique Chalets</div>
+                        <div class="text-center star-animation">
+                            <div class="text-4xl font-bold text-amber-600">12</div>
+                            <div class="text-sm text-gray-600 font-medium">Unique Chalets</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-amber-600">4.9</div>
-                            <div class="text-sm text-gray-600">Rating</div>
+                        <div class="text-center star-animation">
+                            <div class="text-4xl font-bold text-amber-600">4.9</div>
+                            <div class="text-sm text-gray-600 font-medium">Rating</div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="relative">
-                    <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500 hover-scale">
-                        <img 
-                            src="https://placehold.co/800x600/e76f51/ffffff?text=Jordan+Chalets" 
-                            alt="Luxury chalet in Jordan" 
-                            class="w-full h-full object-cover"
-                        />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-amber-600/20 to-orange-600/20 rounded-3xl transform rotate-3"></div>
+                    <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl hover-lift transform-gpu">
+                        <div class="grid grid-cols-2 gap-4 h-96">
+                            <div class="relative">
+                                <img 
+                                    src="https://placehold.co/400x600/e76f51/ffffff?text=Petra+Views" 
+                                    alt="Petra Chalet"
+                                    class="w-full h-full object-cover"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <div class="font-semibold">Petra</div>
+                                    <div class="text-sm">Ancient Wonders</div>
+                                </div>
+                            </div>
+                            <div class="grid grid-rows-2 gap-4">
+                                <div class="relative">
+                                    <img 
+                                        src="https://placehold.co/400x300/0077b6/ffffff?text=Dead+Sea" 
+                                        alt="Dead Sea"
+                                        class="w-full h-full object-cover"
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4 text-white">
+                                        <div class="font-semibold">Dead Sea</div>
+                                        <div class="text-sm">Healing Waters</div>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <img 
+                                        src="https://placehold.co/400x300/9d0208/ffffff?text=Wadi+Rum" 
+                                        alt="Wadi Rum"
+                                        class="w-full h-full object-cover"
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4 text-white">
+                                        <div class="font-semibold">Wadi Rum</div>
+                                        <div class="text-sm">Desert Magic</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
+                    
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl glow-effect transform hover:scale-105 transition-transform duration-300">
                         <div class="flex items-center gap-3">
-                            <i class="fas fa-star text-amber-500"></i>
+                            <div class="flex">
+                                <i class="fas fa-star text-amber-500"></i>
+                                <i class="fas fa-star text-amber-500"></i>
+                                <i class="fas fa-star text-amber-500"></i>
+                                <i class="fas fa-star text-amber-500"></i>
+                                <i class="fas fa-star-half-alt text-amber-500"></i>
+                            </div>
                             <div>
-                                <div class="font-semibold text-gray-900">Exceptional</div>
+                                <div class="font-bold text-gray-900">Exceptional</div>
                                 <div class="text-sm text-gray-600">4.9/5 from 230 reviews</div>
                             </div>
                         </div>
@@ -142,199 +360,253 @@
     </section>
 
     <!-- Featured Chalets -->
-    <section id="chalets" class="py-20 px-6 bg-white">
+    <section id="chalets" class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Available Chalets</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-5xl font-black text-gray-900 mb-4 relative inline-block">
+                    Available Chalets
+                    <div class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-amber-600 to-orange-600"></div>
+                </h2>
+                <p class="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                     Explore our curated selection of luxury accommodations across Jordan's most stunning locations
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover-scale">
-                    <div class="relative">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Petra Chalet -->
+                <div class="group hover-lift rounded-3xl overflow-hidden shadow-2xl transform-gpu" style="animation-delay: 0.1s">
+                    <div class="relative overflow-hidden">
                         <img 
-                            src="https://placehold.co/600x400/e76f51/ffffff?text=Petra+Chalet" 
+                            src="https://placehold.co/600x400/9d0208/ffffff?text=Petra+Heritage" 
                             alt="Petra Heritage Chalet"
-                            class="w-full h-64 object-cover"
+                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700"
                         />
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-amber-600">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-lg font-bold text-amber-600 transform group-hover:scale-110 transition-transform">
                             $249/night
                         </div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-2xl font-bold mb-1">Petra Heritage</h3>
+                            <div class="flex items-center gap-2 text-amber-200">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Petra</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-900">Petra Heritage Chalet</h3>
+                    <div class="p-8 bg-gradient-to-b from-white to-gray-50">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-crown text-amber-500"></i>
+                                <span class="font-semibold text-gray-700">Luxury Experience</span>
+                            </div>
                             <div class="flex items-center gap-1">
                                 <i class="fas fa-star text-amber-500"></i>
-                                <span class="text-sm font-medium text-gray-700">4.8</span>
+                                <span class="text-lg font-medium text-gray-700">4.8</span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2 mb-4 text-gray-600">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span class="text-sm">Petra</span>
-                        </div>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Mountain View
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Mountain View from Ancient City</span>
                             </div>
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Private Pool
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Private Infinity Pool</span>
                             </div>
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Traditional Design
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Traditional Nabatean Design</span>
                             </div>
                         </div>
-                        <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-semibold transition-colors">
-                            View Details
+                        <button class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 group-hover:shadow-lg">
+                            Reserve Now <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover-scale">
-                    <div class="relative">
+                <!-- Dead Sea Chalet -->
+                <div class="group hover-lift rounded-3xl overflow-hidden shadow-2xl transform-gpu" style="animation-delay: 0.2s">
+                    <div class="relative overflow-hidden">
                         <img 
-                            src="https://placehold.co/600x400/0099ff/ffffff?text=Dead+Sea+Retreat" 
+                            src="https://placehold.co/600x400/0077b6/ffffff?text=Dead+Sea+Retreat" 
                             alt="Dead Sea Retreat"
-                            class="w-full h-64 object-cover"
+                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700"
                         />
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-amber-600">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-lg font-bold text-amber-600 transform group-hover:scale-110 transition-transform">
                             $299/night
                         </div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-2xl font-bold mb-1">Dead Sea Retreat</h3>
+                            <div class="flex items-center gap-2 text-amber-200">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Dead Sea</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-900">Dead Sea Retreat</h3>
+                    <div class="p-8 bg-gradient-to-b from-white to-gray-50">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-spa text-amber-500"></i>
+                                <span class="font-semibold text-gray-700">Wellness Focus</span>
+                            </div>
                             <div class="flex items-center gap-1">
                                 <i class="fas fa-star text-amber-500"></i>
-                                <span class="text-sm font-medium text-gray-700">4.9</span>
+                                <span class="text-lg font-medium text-gray-700">4.9</span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2 mb-4 text-gray-600">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span class="text-sm">Dead Sea</span>
-                        </div>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Sea View
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Private Dead Sea Access</span>
                             </div>
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Spa Access
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Full-Service Spa & Wellness</span>
                             </div>
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Infinity Pool
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Infinity Pool with Sea View</span>
                             </div>
                         </div>
-                        <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-semibold transition-colors">
-                            View Details
+                        <button class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 group-hover:shadow-lg">
+                            Reserve Now <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover-scale">
-                    <div class="relative">
+                <!-- Wadi Rum Chalet -->
+                <div class="group hover-lift rounded-3xl overflow-hidden shadow-2xl transform-gpu" style="animation-delay: 0.3s">
+                    <div class="relative overflow-hidden">
                         <img 
-                            src="https://placehold.co/600x400/cc6600/ffffff?text=Wadi+Rum+Lodge" 
+                            src="https://placehold.co/600x400/cc6600/ffffff?text=Wadi+Rum+Adventure" 
                             alt="Wadi Rum Desert Lodge"
-                            class="w-full h-64 object-cover"
+                            class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700"
                         />
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-amber-600">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-lg font-bold text-amber-600 transform group-hover:scale-110 transition-transform">
                             $199/night
                         </div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-2xl font-bold mb-1">Wadi Rum Lodge</h3>
+                            <div class="flex items-center gap-2 text-amber-200">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Wadi Rum</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-xl font-bold text-gray-900">Wadi Rum Desert Lodge</h3>
+                    <div class="p-8 bg-gradient-to-b from-white to-gray-50">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-mountain text-amber-500"></i>
+                                <span class="font-semibold text-gray-700">Adventure Base</span>
+                            </div>
                             <div class="flex items-center gap-1">
                                 <i class="fas fa-star text-amber-500"></i>
-                                <span class="text-sm font-medium text-gray-700">4.7</span>
+                                <span class="text-lg font-medium text-gray-700">4.7</span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2 mb-4 text-gray-600">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span class="text-sm">Wadi Rum</span>
-                        </div>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Desert View
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Desert Safari Included</span>
                             </div>
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Stargazing
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Stargazing Platform</span>
                             </div>
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
-                                Bedouin Experience
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <div class="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                <span>Authentic Bedouin Experience</span>
                             </div>
                         </div>
-                        <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-semibold transition-colors">
-                            View Details
+                        <button class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 group-hover:shadow-lg">
+                            Reserve Now <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </div>
                 </div>
             </div>
             
-            <div class="text-center mt-12">
-                <button class="border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2">
-                    <i class="fas fa-images"></i>
-                    View All Chalets
+            <div class="text-center mt-16">
+                <button class="border-4 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-10 py-4 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 hover-lift flex items-center gap-4 mx-auto group">
+                    <i class="fas fa-images text-2xl group-hover:rotate-12 transition-transform"></i>
+                    View Gallery & Virtual Tours
                 </button>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-6 bg-gradient-to-br from-amber-50 to-orange-50">
+    <section id="about" class="py-24 px-6 desert-bg">
         <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="relative">
-                    <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                        <img 
-                            src="https://placehold.co/600x800/996633/ffffff?text=Reva+Farms+Team" 
-                            alt="Reva Farms Jordan Team" 
-                            class="w-full h-full object-cover"
-                        />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-amber-600/20 to-orange-600/20 rounded-3xl transform rotate-3"></div>
+                    <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl hover-lift">
+                        <div class="aspect-[4/5]">
+                            <img 
+                                src="https://placehold.co/600x800/996633/ffffff?text=Reva+Farms+Team" 
+                                alt="Reva Farms Jordan Team" 
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-users text-amber-600 text-xl"></i>
+                    
+                    <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl glow-effect transform hover:scale-105 transition-transform duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-trophy text-2xl text-white"></i>
+                            </div>
                             <div>
-                                <div class="font-bold text-gray-900">Since 2023</div>
-                                <div class="text-sm text-gray-600">Trusted by travelers</div>
+                                <div class="font-bold text-gray-900 text-xl">Award-Winning</div>
+                                <div class="text-sm text-gray-600">Best Luxury Retreat 2023</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="space-y-6">
-                    <h2 class="text-4xl font-bold text-gray-900">About Reva Farms Jordan</h2>
-                    <p class="text-lg text-gray-700 leading-relaxed">
+                
+                <div class="space-y-8">
+                    <h2 class="text-5xl font-black text-gray-900 relative">
+                        About Reva Farms Jordan
+                        <div class="absolute -bottom-4 left-0 w-24 h-1 bg-gradient-to-r from-amber-600 to-orange-600"></div>
+                    </h2>
+                    
+                    <p class="text-xl text-gray-700 leading-relaxed">
                         Reva Farms Jordan is a premier destination for luxury accommodations across the Kingdom of Jordan, 
                         offering a curated selection of beautiful properties in the country's most stunning locations. 
                         Our mission is to connect travelers with authentic Jordanian experiences, from the ancient wonders 
                         of Petra to the serene shores of the Dead Sea.
                     </p>
-                    <p class="text-lg text-gray-700 leading-relaxed">
+                    
+                    <p class="text-xl text-gray-700 leading-relaxed">
                         Founded in 2023, we've quickly established ourselves as Jordan's most trusted platform for both 
                         property owners and guests. We personally verify each property to ensure it meets our high standards 
                         of comfort, authenticity, and cultural significance, allowing you to experience the true magic of 
                         Jordanian hospitality.
                     </p>
-                    <div class="grid grid-cols-2 gap-6 pt-4">
-                        <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl">
-                            <div class="text-2xl font-bold text-amber-600">100%</div>
-                            <div class="text-sm text-gray-600">Verified Properties</div>
+                    
+                    <div class="grid grid-cols-2 gap-8 pt-6">
+                        <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl text-center hover-lift transform hover:scale-105 transition-transform">
+                            <div class="text-4xl font-black text-amber-600 mb-2">100%</div>
+                            <div class="font-semibold text-gray-800">Verified Properties</div>
+                            <div class="text-sm text-gray-600 mt-1">Each chalet personally inspected</div>
                         </div>
-                        <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl">
-                            <div class="text-2xl font-bold text-amber-600">24/7</div>
-                            <div class="text-sm text-gray-600">Guest Support</div>
+                        <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl text-center hover-lift transform hover:scale-105 transition-transform">
+                            <div class="text-4xl font-black text-amber-600 mb-2">24/7</div>
+                            <div class="font-semibold text-gray-800">Guest Support</div>
+                            <div class="text-sm text-gray-600 mt-1">Dedicated concierge service</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/70 backdrop-blur-sm p-8 rounded-2xl border border-amber-100">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-globe-asia text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-2xl text-gray-900">Sustainable Tourism</div>
+                                <div class="text-gray-700">We partner with local communities and implement eco-friendly practices in all our properties.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -342,111 +614,253 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 bg-white">
+    <!-- Testimonials -->
+    <section class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
-                <p class="text-xl text-gray-600">We're here to help you plan your perfect Jordanian getaway</p>
+                <h2 class="text-5xl font-black text-gray-900 mb-4">Guest Experiences</h2>
+                <p class="text-2xl text-gray-600">Hear what our travelers say about their Jordanian adventures</p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-3xl shadow-xl hover-lift transform-gpu">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 mb-6 italic">
+                        "Our stay at the Petra Heritage Chalet was absolutely magical. Waking up to views of the ancient city was unforgettable. The attention to detail and authentic Jordanian hospitality made our trip truly special."
+                    </blockquote>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold">
+                            SM
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-900">Sarah Mitchell</div>
+                            <div class="text-sm text-gray-600">London, UK</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-3xl shadow-xl hover-lift transform-gpu">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 mb-6 italic">
+                        "The Dead Sea Retreat exceeded all our expectations. The private access to the sea, the incredible spa treatments, and the healing properties of the water made for a rejuvenating experience we'll never forget."
+                    </blockquote>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold">
+                            JP
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-900">James Peterson</div>
+                            <div class="text-sm text-gray-600">Toronto, Canada</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-gradient-to-br from-red-50 to-pink-50 p-8 rounded-3xl shadow-xl hover-lift transform-gpu">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star text-amber-500"></i>
+                        <i class="fas fa-star-half-alt text-amber-500"></i>
+                    </div>
+                    <blockquote class="text-lg text-gray-700 mb-6 italic">
+                        "Wadi Rum was the highlight of our Jordan trip. The desert lodge provided the perfect base for our adventures, and the stargazing experience was out of this world. Our Bedouin hosts made us feel like family."
+                    </blockquote>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold">
+                            AR
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-900">Anna Rodriguez</div>
+                            <div class="text-sm text-gray-600">Sydney, Australia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-4 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover-lift inline-flex items-center gap-3">
+                    <i class="fas fa-comments"></i>
+                    Read All Reviews
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 petra-bg text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-4">Contact Us</h2>
+                <p class="text-2xl opacity-90">We're here to help you plan your perfect Jordanian getaway</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
                 <div class="space-y-8">
-                    <div class="bg-gradient-to-r from-amber-600 to-orange-600 p-8 rounded-2xl text-white">
-                        <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                    <div class="bg-white/20 backdrop-blur-sm p-8 rounded-3xl hover-lift transform hover:scale-105 transition-transform">
+                        <h3 class="text-3xl font-black mb-8 flex items-center gap-3">
+                            <i class="fas fa-envelope"></i>
+                            Get in Touch
+                        </h3>
+                        
                         <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="bg-white/20 p-3 rounded-lg">
-                                    <i class="fas fa-map-marker-alt"></i>
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                                    <i class="fas fa-map-marker-alt text-2xl"></i>
                                 </div>
                                 <div>
-                                    <div class="font-semibold">Address</div>
-                                    <div class="text-amber-100">King Hussein Business Park, Amman, Jordan 11953</div>
+                                    <div class="font-bold text-lg">Address</div>
+                                    <div class="opacity-90">King Hussein Business Park, Amman, Jordan 11953</div>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-4">
-                                <div class="bg-white/20 p-3 rounded-lg">
-                                    <i class="fas fa-phone"></i>
+                            
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                                    <i class="fas fa-phone text-2xl"></i>
                                 </div>
                                 <div>
-                                    <div class="font-semibold">Phone</div>
-                                    <div class="text-amber-100">+962 6 580 0100</div>
+                                    <div class="font-bold text-lg">Phone</div>
+                                    <div class="opacity-90">+962 6 580 0100</div>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-4">
-                                <div class="bg-white/20 p-3 rounded-lg">
-                                    <i class="fas fa-envelope"></i>
+                            
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                                    <i class="fas fa-envelope text-2xl"></i>
                                 </div>
                                 <div>
-                                    <div class="font-semibold">Email</div>
-                                    <div class="text-amber-100">info@revafarmsjordan.com</div>
+                                    <div class="font-bold text-lg">Email</div>
+                                    <div class="opacity-90">info@revafarmsjordan.com</div>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-4">
-                                <div class="bg-white/20 p-3 rounded-lg">
-                                    <i class="fas fa-clock"></i>
+                            
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                                    <i class="fas fa-clock text-2xl"></i>
                                 </div>
                                 <div>
-                                    <div class="font-semibold">Working Hours</div>
-                                    <div class="text-amber-100">Sunday-Thursday: 9am-5pm</div>
-                                    <div class="text-amber-100">Friday-Saturday: Closed</div>
+                                    <div class="font-bold text-lg">Working Hours</div>
+                                    <div class="opacity-90">Sunday-Thursday: 9am-5pm</div>
+                                    <div class="opacity-90">Friday-Saturday: Closed</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-2xl">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-calendar-alt text-amber-600 text-xl"></i>
+                    <div class="bg-gradient-to-r from-amber-600 to-orange-600 p-8 rounded-3xl text-center hover-lift transform hover:scale-105 transition-transform">
+                        <div class="flex items-center justify-center gap-4 mb-4">
+                            <i class="fas fa-calendar-alt text-3xl"></i>
                             <div>
-                                <div class="font-semibold text-gray-900">Ready to Book?</div>
-                                <div class="text-gray-700">Contact us today to reserve your dream chalet</div>
+                                <div class="text-2xl font-black">Ready to Book?</div>
+                                <div class="text-lg opacity-90">Reserve your dream chalet today</div>
                             </div>
                         </div>
+                        <button class="bg-white text-amber-600 hover:bg-gray-100 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
+                            Check Availability
+                        </button>
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 p-8 rounded-2xl">
-                    <form class="space-y-6">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20">
+                    <form action="https://formspree.io/f/xqkngwga" method="POST" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                            <div class="group">
+                                <label class="block text-sm font-medium mb-2 opacity-90">First Name</label>
                                 <input 
                                     type="text" 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                    name="first_name"
+                                    class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 placeholder-white/70 text-white"
                                     placeholder="Your first name"
+                                    required
                                 />
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                            <div class="group">
+                                <label class="block text-sm font-medium mb-2 opacity-90">Last Name</label>
                                 <input 
                                     type="text" 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                    name="last_name"
+                                    class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 placeholder-white/70 text-white"
                                     placeholder="Your last name"
+                                    required
                                 />
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <div class="group">
+                            <label class="block text-sm font-medium mb-2 opacity-90">Email</label>
                             <input 
                                 type="email" 
-                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                name="email"
+                                class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 placeholder-white/70 text-white"
                                 placeholder="your.email@example.com"
+                                required
                             />
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <div class="group">
+                            <label class="block text-sm font-medium mb-2 opacity-90">Phone</label>
+                            <input 
+                                type="tel" 
+                                name="phone"
+                                class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 placeholder-white/70 text-white"
+                                placeholder="+962 XXX XXX XXXX"
+                            />
+                        </div>
+                        <div class="group">
+                            <label class="block text-sm font-medium mb-2 opacity-90">Preferred Chalet</label>
+                            <select 
+                                name="chalet"
+                                class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+                            >
+                                <option value="" class="text-gray-900">Select a chalet</option>
+                                <option value="petra" class="text-gray-900">Petra Heritage Chalet</option>
+                                <option value="dead-sea" class="text-gray-900">Dead Sea Retreat</option>
+                                <option value="wadi-rum" class="text-gray-900">Wadi Rum Desert Lodge</option>
+                                <option value="any" class="text-gray-900">Any Chalet</option>
+                            </select>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="group">
+                                <label class="block text-sm font-medium mb-2 opacity-90">Check-in Date</label>
+                                <input 
+                                    type="date" 
+                                    name="check_in"
+                                    class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+                                />
+                            </div>
+                            <div class="group">
+                                <label class="block text-sm font-medium mb-2 opacity-90">Check-out Date</label>
+                                <input 
+                                    type="date" 
+                                    name="check_out"
+                                    class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+                                />
+                            </div>
+                        </div>
+                        <div class="group">
+                            <label class="block text-sm font-medium mb-2 opacity-90">Special Requests</label>
                             <textarea 
-                                rows="5"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                name="message"
+                                rows="4"
+                                class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-white/50 placeholder-white/70 text-white resize-none"
                                 placeholder="Tell us about your dream Jordanian getaway..."
                             ></textarea>
                         </div>
                         <button 
                             type="submit"
-                            class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                            class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover-lift"
                         >
-                            Send Message
+                            Send Booking Request
                         </button>
                     </form>
                 </div>
@@ -455,101 +869,183 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 px-6">
+    <footer class="bg-gray-900 text-white py-16 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-4 gap-10">
                 <div class="md:col-span-2">
-                    <div class="flex items-center space-x-2 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                        </svg>
-                        <span class="text-2xl font-bold">Reva Chalets</span>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        </div>
+                        <span class="text-3xl font-black">Reva Chalets</span>
                     </div>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
+                    <p class="text-gray-400 mb-8 leading-relaxed text-lg">
                         Experience the magic of Jordan with our luxury chalets and authentic hospitality. 
                         From Petra to the Dead Sea, we offer the finest accommodations in the Kingdom.
                     </p>
-                    <div class="flex space-x-4">
-                        <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors cursor-pointer">
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors text-xl">
                             <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors cursor-pointer">
-                            <i class="fab fa-twitter"></i>
-                        </div>
-                        <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors cursor-pointer">
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors text-xl">
                             <i class="fab fa-instagram"></i>
-                        </div>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors text-xl">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
+                
                 <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <div class="space-y-2">
-                        <a href="#home" class="block text-gray-400 hover:text-white transition-colors">Home</a>
-                        <a href="#chalets" class="block text-gray-400 hover:text-white transition-colors">Chalets</a>
-                        <a href="#about" class="block text-gray-400 hover:text-white transition-colors">About</a>
-                        <a href="#contact" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
+                    <h4 class="text-2xl font-black mb-6">Quick Links</h4>
+                    <div class="space-y-4">
+                        <a href="#home" class="block text-gray-400 hover:text-white hover:translate-x-2 transition-transform duration-300 flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-amber-500"></i>
+                            Home
+                        </a>
+                        <a href="#chalets" class="block text-gray-400 hover:text-white hover:translate-x-2 transition-transform duration-300 flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-amber-500"></i>
+                            Chalets
+                        </a>
+                        <a href="#about" class="block text-gray-400 hover:text-white hover:translate-x-2 transition-transform duration-300 flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-amber-500"></i>
+                            About
+                        </a>
+                        <a href="#contact" class="block text-gray-400 hover:text-white hover:translate-x-2 transition-transform duration-300 flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-amber-500"></i>
+                            Contact
+                        </a>
                     </div>
                 </div>
+                
                 <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
-                    <div class="space-y-2">
-                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">FAQ</a>
-                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Booking Policy</a>
-                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Terms & Conditions</a>
+                    <h4 class="text-2xl font-black mb-6">Support</h4>
+                    <div class="space-y-4">
+                        <a href="#" class="block text-gray-400 hover:text-white hover:translate-x-2 transition-transform duration-300 flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-amber-500"></i>
+                            FAQ
+                        </a>
+                        <a href="#" class="block text-gray-400 hover:text-white hover:translate-x-2 transition-transform duration-300 flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-amber-500"></i>
+                            Booking Policy
+                        </a>
+                        <a href="#" class="block text-gray-400 hover:text-white hover:translate-x-2 transition-transform duration-300 flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-amber-500"></i>
+                            Privacy Policy
+                        </a>
+                        <a href="#" class="block text-gray-400 hover:text-white hover:translate-x-2 transition-transform duration-300 flex items-center gap-2">
+                            <i class="fas fa-chevron-right text-amber-500"></i>
+                            Terms & Conditions
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Reva Chalets. All rights reserved. | Crafted with ❤️ for Jordan</p>
+            
+            <div class="border-t border-gray-800 mt-12 pt-12 text-center">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">
+                        &copy; 2024 Reva Chalets. All rights reserved.
+                    </p>
+                    <div class="flex items-center gap-4 text-gray-400">
+                        <span>Follow us on:</span>
+                        <a href="#" class="text-amber-500 hover:text-amber-400 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-amber-500 hover:text-amber-400 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-amber-500 hover:text-amber-400 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursor-dot');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+        
+        // Add hover effect to clickable elements
+        document.querySelectorAll('a, button, .nav-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+                cursor.style.backgroundColor = 'rgba(231, 111, 81, 0.8)';
+            });
+            item.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.backgroundColor = 'rgba(231, 111, 81, 0.5)';
+            });
+        });
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-
-        // Simple animation for elements when they come into view
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
+        
+        // Animation on scroll
+        const animatedElements = document.querySelectorAll('.animate-fade-in, .stagger-animation, .animated-section');
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe sections
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transition = 'opacity 0.6s ease-out';
-            observer.observe(section);
-        });
-
-        // Update opacity when intersecting
-        const opacityObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('section').forEach(section => {
-            opacityObserver.observe(section);
+        
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+        
+        // Add staggered animation to chalets
+        document.querySelectorAll('.group').forEach((el, index) => {
+            el.style.animationDelay = `${0.1 + index * 0.1}s`;
+        });
+        
+        // Form submission feedback
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                // Form will be handled by Formspree
+                // Add success message or loading state if needed
+            });
+        }
+        
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('#home');
+            if (hero) {
+                hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
+            }
         });
     </script>
 </body>
