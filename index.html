@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reva Chalets - Experience the Magic of Jordan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'amber': {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcbf49',
+                            400: '#f4a261',
+                            500: '#e9c46a',
+                            600: '#e76f51',
+                            700: '#d62828',
+                            800: '#9d0208',
+                            900: '#600'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease-out;
+        }
+        .hover-scale:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #e76f51, #f4a261, #e9c46a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-amber-50 to-orange-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-lg border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span class="text-2xl font-bold gradient-text">Reva Chalets</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Home</a>
+                    <a href="#chalets" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Chalets</a>
+                    <a href="#about" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-amber-600 transition-colors font-medium">Contact</a>
+                </div>
+                <button class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Book Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium">
+                        <i class="fas fa-sparkles w-4 h-4"></i>
+                        Premium Jordanian Experience
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                        Experience the 
+                        <span class="gradient-text"> Magic of Jordan</span>
+                    </h1>
+                    <p class="text-xl text-gray-700 leading-relaxed">
+                        Discover extraordinary accommodations from the ancient wonders of Petra to the serene shores of the Dead Sea. 
+                        Immerse yourself in authentic Jordanian hospitality and breathtaking landscapes.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2">
+                            Explore Chalets
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                            View Gallery
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-8 pt-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-amber-600">150+</div>
+                            <div class="text-sm text-gray-600">Happy Guests</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-amber-600">12</div>
+                            <div class="text-sm text-gray-600">Unique Chalets</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-amber-600">4.9</div>
+                            <div class="text-sm text-gray-600">Rating</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500 hover-scale">
+                        <img 
+                            src="https://placehold.co/800x600/e76f51/ffffff?text=Jordan+Chalets" 
+                            alt="Luxury chalet in Jordan" 
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-star text-amber-500"></i>
+                            <div>
+                                <div class="font-semibold text-gray-900">Exceptional</div>
+                                <div class="text-sm text-gray-600">4.9/5 from 230 reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Chalets -->
+    <section id="chalets" class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Available Chalets</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore our curated selection of luxury accommodations across Jordan's most stunning locations
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover-scale">
+                    <div class="relative">
+                        <img 
+                            src="https://placehold.co/600x400/e76f51/ffffff?text=Petra+Chalet" 
+                            alt="Petra Heritage Chalet"
+                            class="w-full h-64 object-cover"
+                        />
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-amber-600">
+                            $249/night
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Petra Heritage Chalet</h3>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-amber-500"></i>
+                                <span class="text-sm font-medium text-gray-700">4.8</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-4 text-gray-600">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="text-sm">Petra</span>
+                        </div>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Mountain View
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Private Pool
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Traditional Design
+                            </div>
+                        </div>
+                        <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-semibold transition-colors">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover-scale">
+                    <div class="relative">
+                        <img 
+                            src="https://placehold.co/600x400/0099ff/ffffff?text=Dead+Sea+Retreat" 
+                            alt="Dead Sea Retreat"
+                            class="w-full h-64 object-cover"
+                        />
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-amber-600">
+                            $299/night
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Dead Sea Retreat</h3>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-amber-500"></i>
+                                <span class="text-sm font-medium text-gray-700">4.9</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-4 text-gray-600">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="text-sm">Dead Sea</span>
+                        </div>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Sea View
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Spa Access
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Infinity Pool
+                            </div>
+                        </div>
+                        <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-semibold transition-colors">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover-scale">
+                    <div class="relative">
+                        <img 
+                            src="https://placehold.co/600x400/cc6600/ffffff?text=Wadi+Rum+Lodge" 
+                            alt="Wadi Rum Desert Lodge"
+                            class="w-full h-64 object-cover"
+                        />
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-amber-600">
+                            $199/night
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-xl font-bold text-gray-900">Wadi Rum Desert Lodge</h3>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-amber-500"></i>
+                                <span class="text-sm font-medium text-gray-700">4.7</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-4 text-gray-600">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="text-sm">Wadi Rum</span>
+                        </div>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Desert View
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Stargazing
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-1.5 h-1.5 bg-amber-400 rounded-full"></div>
+                                Bedouin Experience
+                            </div>
+                        </div>
+                        <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-semibold transition-colors">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2">
+                    <i class="fas fa-images"></i>
+                    View All Chalets
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-gradient-to-br from-amber-50 to-orange-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                        <img 
+                            src="https://placehold.co/600x800/996633/ffffff?text=Reva+Farms+Team" 
+                            alt="Reva Farms Jordan Team" 
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-users text-amber-600 text-xl"></i>
+                            <div>
+                                <div class="font-bold text-gray-900">Since 2023</div>
+                                <div class="text-sm text-gray-600">Trusted by travelers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h2 class="text-4xl font-bold text-gray-900">About Reva Farms Jordan</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Reva Farms Jordan is a premier destination for luxury accommodations across the Kingdom of Jordan, 
+                        offering a curated selection of beautiful properties in the country's most stunning locations. 
+                        Our mission is to connect travelers with authentic Jordanian experiences, from the ancient wonders 
+                        of Petra to the serene shores of the Dead Sea.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Founded in 2023, we've quickly established ourselves as Jordan's most trusted platform for both 
+                        property owners and guests. We personally verify each property to ensure it meets our high standards 
+                        of comfort, authenticity, and cultural significance, allowing you to experience the true magic of 
+                        Jordanian hospitality.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl">
+                            <div class="text-2xl font-bold text-amber-600">100%</div>
+                            <div class="text-sm text-gray-600">Verified Properties</div>
+                        </div>
+                        <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl">
+                            <div class="text-2xl font-bold text-amber-600">24/7</div>
+                            <div class="text-sm text-gray-600">Guest Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <p class="text-xl text-gray-600">We're here to help you plan your perfect Jordanian getaway</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-r from-amber-600 to-orange-600 p-8 rounded-2xl text-white">
+                        <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/20 p-3 rounded-lg">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Address</div>
+                                    <div class="text-amber-100">King Hussein Business Park, Amman, Jordan 11953</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/20 p-3 rounded-lg">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Phone</div>
+                                    <div class="text-amber-100">+962 6 580 0100</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/20 p-3 rounded-lg">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Email</div>
+                                    <div class="text-amber-100">info@revafarmsjordan.com</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-white/20 p-3 rounded-lg">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Working Hours</div>
+                                    <div class="text-amber-100">Sunday-Thursday: 9am-5pm</div>
+                                    <div class="text-amber-100">Friday-Saturday: Closed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-2xl">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-calendar-alt text-amber-600 text-xl"></i>
+                            <div>
+                                <div class="font-semibold text-gray-900">Ready to Book?</div>
+                                <div class="text-gray-700">Contact us today to reserve your dream chalet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input 
+                                    type="text" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                    placeholder="Your first name"
+                                />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input 
+                                    type="text" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                    placeholder="Your last name"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input 
+                                type="email" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                placeholder="your.email@example.com"
+                            />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea 
+                                rows="5"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                                placeholder="Tell us about your dream Jordanian getaway..."
+                            ></textarea>
+                        </div>
+                        <button 
+                            type="submit"
+                            class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        <span class="text-2xl font-bold">Reva Chalets</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Experience the magic of Jordan with our luxury chalets and authentic hospitality. 
+                        From Petra to the Dead Sea, we offer the finest accommodations in the Kingdom.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors cursor-pointer">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors cursor-pointer">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div class="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors cursor-pointer">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="#home" class="block text-gray-400 hover:text-white transition-colors">Home</a>
+                        <a href="#chalets" class="block text-gray-400 hover:text-white transition-colors">Chalets</a>
+                        <a href="#about" class="block text-gray-400 hover:text-white transition-colors">About</a>
+                        <a href="#contact" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <div class="space-y-2">
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">FAQ</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Booking Policy</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="block text-gray-400 hover:text-white transition-colors">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Reva Chalets. All rights reserved. | Crafted with ❤️ for Jordan</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple animation for elements when they come into view
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transition = 'opacity 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Update opacity when intersecting
+        const opacityObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            opacityObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
